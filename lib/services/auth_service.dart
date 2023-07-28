@@ -14,6 +14,7 @@ class AuthService {
       if (response.statusCode == 200) {
         final SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('user-token', response.data['token']);
+        prefs.setString('user', email);
 
         result = {"isSuccess": true, "message": "Berhasil login"};
       }

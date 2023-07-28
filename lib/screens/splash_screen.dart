@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     if (userToken != null) {
       Future.delayed(const Duration(seconds: 3), () {
-        Get.toNamed(RouteName.pageHome);
+        Get.toNamed(RouteName.pageMain);
       });
     } else {
       Future.delayed(const Duration(seconds: 3), () {

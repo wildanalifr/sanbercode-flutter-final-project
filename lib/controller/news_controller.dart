@@ -1,7 +1,7 @@
 import 'package:final_project/services/news_service.dart';
 import 'package:get/get.dart';
 
-class Controller extends GetxController {
+class NewsController extends GetxController {
   var news = [].obs;
   var isLoading = true.obs;
 
@@ -18,6 +18,7 @@ class Controller extends GetxController {
       var result = await NewsService().getAllNews();
       if (result != null) {
         news.assignAll(result);
+        print(result);
       } else {
         print('null');
       }

@@ -1,10 +1,57 @@
+import 'package:final_project/controller/bookmark_controller.dart';
+import 'package:final_project/widgets/card_news.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class BookMarkScreen extends StatelessWidget {
-  const BookMarkScreen({super.key});
+  final BookmarkController _bookmarkController = Get.put(BookmarkController());
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+            padding: const EdgeInsets.only(left: 8, right: 8),
+            // if there's listview or listView builder inside listview,
+            // wrap listview with column add listview or listview builder with
+            // shrinkWrap:true and just enough column [listview,listview]
+            child: Column(
+              children: [
+                const Text(
+                  'Your Bookmarks News',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                if (_bookmarkController.bookmarks.isNotEmpty)
+                  Expanded(
+                      //selalu wrap listview builder dengan expanded
+                      child: Obx(
+                    () => ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: _bookmarkController.bookmarks.length,
+                      itemBuilder: (context, index) {
+                        var item = _bookmarkController.bookmarks[index];
+                        return Column(
+                          children: [
+                            CardNews(id: item['id'], data: item['data']),
+                            const SizedBox(
+                              height: 20,
+                            )
+                          ],
+                        );
+                      },
+                    ),
+                  ))
+                else
+                  ListView(
+                    shrinkWrap: true,
+                    children: [Text('gk ada')],
+                  )
+              ],
+            )),
+      ),
+    );
   }
 }

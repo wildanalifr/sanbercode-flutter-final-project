@@ -1,34 +1,43 @@
-import 'dart:convert';
-
-List<NewsModel> NewsModelFromJson(String str) =>
-    List<NewsModel>.from(jsonDecode(str).map((x) => NewsModel.fromJson(x)));
-
-String NewsModelToJson(List<NewsModel> data) =>
-    jsonEncode(List<dynamic>.from(data.map((e) => e.toJson())));
-
 class NewsModel {
+  int? id;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  String? author;
+  String? title;
+  String? description;
+  String? country;
+
   NewsModel({
-    required this.userId,
-    required this.id,
-    required this.title,
-    required this.body,
+    this.id,
+    this.createdAt,
+    this.updatedAt,
+    this.author,
+    this.title,
+    this.description,
+    this.country,
   });
 
-  int? userId;
-  int? id;
-  String? title;
-  String? body;
-
   factory NewsModel.fromJson(Map<String, dynamic> json) => NewsModel(
-      userId: json["userId"],
-      id: json["id"],
-      title: json["title"],
-      body: json['body']);
+        id: json["id"],
+        createdAt: json["created_at"] == null
+            ? null
+            : DateTime.parse(json["created_at"]),
+        updatedAt: json["updated_at"] == null
+            ? null
+            : DateTime.parse(json["updated_at"]),
+        author: json["author"],
+        title: json["title"],
+        description: json["description"],
+        country: json["country"],
+      );
 
   Map<String, dynamic> toJson() => {
-        "userId": userId,
         "id": id,
+        "created_at": createdAt?.toIso8601String(),
+        "updated_at": updatedAt?.toIso8601String(),
+        "author": author,
         "title": title,
-        "body": body,
+        "description": description,
+        "country": country,
       };
 }
