@@ -62,7 +62,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
             currentAccountPicture: CircleAvatar(
               child: Text(
                 // '$userInitialize',
-                'halo',
+                'User',
                 style: const TextStyle(fontSize: 35),
               ),
             ),
