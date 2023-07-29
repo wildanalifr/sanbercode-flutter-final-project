@@ -22,13 +22,12 @@ class Routes {
     GetPage(name: RouteName.pageBookmark, page: () => BookMarkScreen()),
     GetPage(name: RouteName.pageDetailNews, page: () => DetailNewsScreen()),
     GetPage(
-        name: RouteName.pageListNewsAdmin,
-        page: () => ListNewsAdminScreen(),
-        children: [
-          GetPage(
-            name: RouteName.pageCreateNews,
-            page: () => const CreateNewsScreen(),
-          ),
-        ]),
+      name: RouteName.pageCreateNews,
+      page: () => const CreateNewsScreen(),
+    ),
+    GetPage(
+      name: RouteName.pageListNewsAdmin,
+      page: () => ListNewsAdminScreen(),
+    ),
   ];
 }

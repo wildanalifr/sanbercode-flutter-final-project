@@ -58,14 +58,8 @@ class _DrawerScreenState extends State<DrawerScreen> {
         children: [
           UserAccountsDrawerHeader(
             accountName: Container(),
-            accountEmail: Text("user"),
-            currentAccountPicture: CircleAvatar(
-              child: Text(
-                // '$userInitialize',
-                'User',
-                style: const TextStyle(fontSize: 35),
-              ),
-            ),
+            accountEmail: Text("User"),
+            currentAccountPicture: CircleAvatar(child: Icon(Icons.person_2)),
           ),
           DrawerListTile(
             iconData: Icons.person,

@@ -17,10 +17,6 @@ class BookMarkScreen extends StatelessWidget {
           // shrinkWrap:true and just enough column [listview,listview]
           child: Obx(() => Column(
                 children: [
-                  const Text(
-                    'Your Bookmarks News',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-                  ),
                   SizedBox(
                     height: 20,
                   ),
