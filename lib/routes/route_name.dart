@@ -8,4 +8,5 @@ abstract class RouteName {
   static const pageListNewsAdmin = '/page-list-news-admin';
   static const pageCreateNews = '/page-create-news';
   static const pageDetailNews = '/page-detail-news';
+  static const pageProfile = '/page-profile';
 }

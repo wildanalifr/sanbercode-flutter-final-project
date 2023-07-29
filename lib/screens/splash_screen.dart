@@ -37,9 +37,23 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: ListView(
-        children: const [Center(child: Text('...loading pokoke'))],
-      )),
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.network(
+                'https://cdn-icons-png.flaticon.com/512/21/21601.png',
+                width: 100,
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              const CircularProgressIndicator()
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

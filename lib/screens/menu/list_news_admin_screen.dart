@@ -23,31 +23,42 @@ class _ListNewsAdminScreenState extends State<ListNewsAdminScreen> {
         child: Obx(
           () => LoadingOverlay(
             isLoading: _newsController.isLoading.value,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ElevatedButton(
-                    onPressed: () {
-                      // Get.toNamed('/page-list-news-admin/page-create-news');
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => CreateNewsScreen()));
-                    },
-                    child: Text('+ Add New a News')),
-                SizedBox(
-                  height: 15,
-                ),
-                ListView.builder(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height,
+                child: ListView.builder(
                   shrinkWrap: true,
                   itemCount: _newsController.news.length,
                   itemBuilder: (context, index) {
                     var item = _newsController.news[index];
-                    return Text('$index');
+                    print(_newsController.news.length);
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        index == 0
+                            ? ElevatedButton(
+                                onPressed: () {},
+                                child: Text('+ Add New a News'))
+                            : Container(),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        CardNews(
+                          id: index,
+                          data: item,
+                        ),
+                      ],
+                    );
                   },
                 ),
-              ],
+              ),
             ),
+            // ListView(
+            //   children: [
+            //       ElevatedButton(onPressed: () {}, child: Text('data')),
+            //   ],
+            // )
           ),
         ),
         // Text('data')

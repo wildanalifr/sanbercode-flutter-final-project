@@ -1,4 +1,7 @@
+import 'package:final_project/routes/route_name.dart';
+import 'package:final_project/services/auth_service.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DrawerScreen extends StatefulWidget {
@@ -17,6 +20,28 @@ class _DrawerScreenState extends State<DrawerScreen> {
     final String? userInfo = prefs.getString('user');
     user = userInfo!;
     userInitialize = userInfo.substring(0, 1).toUpperCase();
+  }
+
+  Future<void> _logout() async {
+    var result = await AuthService().logout();
+    if (result['isSuccess']) {
+      Get.snackbar(
+        "Sukses Logout",
+        "Terimakasih",
+        backgroundColor: Colors.green[300],
+        icon: const Icon(Icons.error),
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      Get.toNamed(RouteName.pageLogin);
+    } else {
+      Get.snackbar(
+        "Error",
+        result['message'].toString(),
+        backgroundColor: Colors.red[300],
+        icon: const Icon(Icons.error),
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    }
   }
 
   @override
@@ -45,12 +70,16 @@ class _DrawerScreenState extends State<DrawerScreen> {
           DrawerListTile(
             iconData: Icons.person,
             title: "Profile",
-            onTilePressed: () {},
+            onTilePressed: () {
+              Get.toNamed(RouteName.pageProfile);
+            },
           ),
           DrawerListTile(
             iconData: Icons.exit_to_app,
             title: "Exit",
-            onTilePressed: () {},
+            onTilePressed: () {
+              _logout();
+            },
           ),
         ],
       ),

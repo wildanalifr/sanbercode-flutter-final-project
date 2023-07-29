@@ -12,7 +12,7 @@ class NewsService {
   Future<List<NewsNew>?> getAllNews() async {
     try {
       final response = await http.get(Uri.parse(
-          'https://newsapi.org/v2/top-headlines?country=us&apiKey=4ccd8485c2844d2da8a6c1d9bc7d67ca'));
+          'https://newsapi.org/v2/top-headlines?country=ar&apiKey=4ccd8485c2844d2da8a6c1d9bc7d67ca'));
 
       if (response.statusCode == 200) {
         List jsonResponse = jsonDecode(response.body)['articles'];

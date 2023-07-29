@@ -61,7 +61,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: Image.network(
                                 _newsController.isLoading.value
                                     ? "https://images.unsplash.com/photo-1607434472257-d9f8e57a643d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=872&q=80"
-                                    : _newsController.news[0].urlToImage,
+                                    : _newsController.news[0].urlToImage == null
+                                        ? "https://images.unsplash.com/photo-1607434472257-d9f8e57a643d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=872&q=80"
+                                        : _newsController.news[0].urlToImage,
                                 fit: BoxFit.contain,
                               ),
                             ),

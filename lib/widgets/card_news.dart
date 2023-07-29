@@ -43,7 +43,7 @@ class _CardNewsState extends State<CardNews> {
           ClipRRect(
             borderRadius: BorderRadius.circular(15),
             child: Image.network(
-              '${widget.data.urlToImage}',
+              '${widget.data.urlToImage == null ? "https://thumbs.dreamstime.com/b/news-newspapers-folded-stacked-word-wooden-block-puzzle-dice-concept-newspaper-media-press-release-42301371.jpg" : widget.data.urlToImage}',
               width: 150,
               height: 150,
               fit: BoxFit.cover,
@@ -53,8 +53,7 @@ class _CardNewsState extends State<CardNews> {
             width: 10,
           ),
           Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: ListView(
               children: [
                 Text('${widget.data.title}',
                     style:

@@ -5,13 +5,14 @@ class BookmarkController extends GetxController {
 
   void add(item) {
     bookmarks.add(item);
-    print("length bookmarks ${bookmarks.length}");
     update();
+    print("length bookmarks ${bookmarks.length}");
   }
 
   void remove(item) {
     bookmarks.removeWhere((items) => items['id'] == item['id']);
     update();
+    print("length bookmarks ${bookmarks.length}");
   }
 
   bool isContain(int id) {

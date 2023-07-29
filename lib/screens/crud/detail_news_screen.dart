@@ -30,7 +30,7 @@ class _DetailNewsScreenState extends State<DetailNewsScreen> {
           child: Stack(
         children: [
           Image.network(
-            '${data.urlToImage}',
+            '${data.urlToImage == null ? "https://thumbs.dreamstime.com/b/news-newspapers-folded-stacked-word-wooden-block-puzzle-dice-concept-newspaper-media-press-release-42301371.jpg" : data.urlToImage}',
             height: 300,
             fit: BoxFit.cover,
           ),
@@ -101,7 +101,7 @@ class _DetailNewsScreenState extends State<DetailNewsScreen> {
                         height: 15,
                       ),
                       Text(
-                        data.content,
+                        data.content == null ? "" : data.content,
                         style: TextStyle(fontWeight: FontWeight.w300),
                       )
                     ],

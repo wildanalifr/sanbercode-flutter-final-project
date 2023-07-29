@@ -52,4 +52,31 @@ class AuthService {
     }
     return result;
   }
+
+  Future<dynamic> logout() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String? userToken = prefs.getString('user-token');
+
+    Map<String, dynamic>? result;
+
+    try {
+      final response = await DioHttp.request.post('/logout',
+          options: Options(headers: {"authorization": "Bearer $userToken"}));
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      await preferences.clear();
+
+      if (response.statusCode == 200) {
+        result = {"isSuccess": true};
+      }
+    } on DioException catch (e) {
+      var message = "";
+      if (e.response!.statusCode == 400) {
+        message = e.response!.data["message"].toString();
+      } else if (e.response!.statusCode == 404) {
+        message = "Server not found";
+      }
+      result = {"isSuccess": false, "message": message.toString()};
+    }
+    return result;
+  }
 }
