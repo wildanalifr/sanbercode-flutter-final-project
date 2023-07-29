@@ -38,7 +38,9 @@ class _ListNewsAdminScreenState extends State<ListNewsAdminScreen> {
                       children: [
                         index == 0
                             ? ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Get.toNamed(RouteName.pageCreateNews);
+                                },
                                 child: Text('+ Add New a News'))
                             : Container(),
                         SizedBox(
